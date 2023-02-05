@@ -13,6 +13,6 @@ common_tickers, all_files = fn.find_tickers(all_files,'Ticker','Peso (%)')
 prices=fn.import_prices(all_files,common_tickers,'2021-01-29','2023-01-26')
 
 cash_w=float(all_files['20210129'][all_files['20210129']['Ticker'].str.contains("MXN")]['Peso (%)'])
-cap_titles = fn.titles(all_files,prices,cash_w)
+cap_titles = fn.titles(all_files,prices,cash_w,'20210129')
 
-print(cap_titles)
+returns_ticker, returns_monthly = fn.rend(prices,cap_titles,cash_w)
