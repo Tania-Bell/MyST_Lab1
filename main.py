@@ -7,6 +7,7 @@ Created on Mon Jan 30 19:51:46 2023
 
 import functions as fn
 from data import all_files
+import pandas as pd
 
 common_tickers, all_files = fn.find_tickers(all_files,'Ticker','Peso (%)')
 
@@ -18,3 +19,10 @@ cap_shares = fn.shares(all_files,prices,cash_w,'20210129')
 returns_ticker, returns_monthly = fn.rend(prices,cap_shares,cash_w)
 
 print(returns_monthly)
+
+rf=.1106
+
+Pesos=pd.DataFrame(data={'Tickers':prices.index,'Weights': fn.sharpe(prices,rf).round(13)}) 
+Pesos = Pesos[Pesos['Weights'] != 0]
+print(Pesos)
+
