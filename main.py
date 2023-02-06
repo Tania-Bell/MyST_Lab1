@@ -25,3 +25,4 @@ rf=.1106
 Pesos=pd.DataFrame(data={'Tickers':prices.index,'Weights': fn.sharpe(prices,rf).round(13)}) 
 Pesos = Pesos[Pesos['Weights'] != 0]
 print(Pesos)
+
