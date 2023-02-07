@@ -36,4 +36,3 @@ comission_rate = 0.00125
 comission_monthly = fn.comission(comission_rate,prices,shares_rebal_a)
 
 df_operaciones = fn.operations(shares_rebal_a,comission_rate,prices,comission_monthly)
-
