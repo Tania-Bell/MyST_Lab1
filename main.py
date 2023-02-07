@@ -38,3 +38,5 @@ df_activa = fn.rend_a(cap_shares_a,prices,cash_w)
 comission_a = fn.comission_a(comission_rate,prices,shares_rebal_a,cash_w)
 
 df_operaciones = fn.operations(shares_rebal_a,comission_rate,prices,comission_a)
+
+print(comission_a)
