@@ -9,6 +9,10 @@ import functions as fn
 from data import all_files
 import pandas as pd
 
+comission_rate = 0.00125
+
+rf=.1106
+
 all_files = fn.import_files('files/*.csv')
 
 common_tickers, all_files = fn.find_tickers(all_files,'Ticker','Peso (%)')
@@ -17,22 +21,20 @@ prices=fn.import_prices(all_files,common_tickers,'2021-01-29','2023-01-26')
 
 cash_w=float(all_files['20210129'][all_files['20210129']['Ticker'].str.contains("MXN")]['Peso (%)'])
 
-cap_shares_p = fn.shares_passive(all_files,prices,cash_w,'20210129')
+cap_shares_p = fn.shares_passive(all_files,prices,cash_w,'20210129').round()
 
-returns_ticker_p, df_pasiva = fn.rend_p(prices,cap_shares_p,cash_w)
+comission_p = fn.comission_p(comission_rate,prices,cap_shares_p,'20210129')
 
-rf=.1106
+returns_ticker_p, df_pasiva = fn.rend_p(prices,cap_shares_p,cash_w,comission_p)
 
 weights = fn.sharpe(prices,rf)
 
-cap_shares_a = fn.shares_active(weights, prices, cash_w, '20210129')
+cap_shares_a = fn.shares_active(weights, prices, cash_w, '20210129').round()
 
 shares_rebal_a = fn.rebalance(prices,cap_shares_a,0.05,0.025)
 
 df_activa = fn.rend_a(cap_shares_a,prices,cash_w)
 
-comission_rate = 0.00125
+comission_a = fn.comission_a(comission_rate,prices,shares_rebal_a,cash_w)
 
-comission_monthly = fn.comission(comission_rate,prices,shares_rebal_a)
-
-df_operaciones = fn.operations(shares_rebal_a,comission_rate,prices,comission_monthly)
+df_operaciones = fn.operations(shares_rebal_a,comission_rate,prices,comission_a)
