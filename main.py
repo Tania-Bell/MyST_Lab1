@@ -11,7 +11,7 @@ import pandas as pd
 
 comission_rate = 0.00125
 
-rf=.1106
+rf=.0429
 
 r_change = 0.05
 
@@ -22,6 +22,7 @@ all_files = fn.import_files('files/*.csv')
 common_tickers, all_files = fn.find_tickers(all_files,'Ticker','Peso (%)')
 
 prices=fn.import_prices(all_files,common_tickers,'2021-01-29','2023-01-26')
+print(prices)
 
 cash_w=float(all_files['20210129'][all_files['20210129']['Ticker'].str.contains("MXN")]['Peso (%)'])
 
