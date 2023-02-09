@@ -1,5 +1,14 @@
+# -- --------------------------------------------------------------------------------------------------- -- #
+# -- project: Active vs Passive Investment                                                               -- #
+# -- script: requirements.txt : text file with the required libraries for the project                    -- #
+# -- author: Tania-Bell                                                                                  -- #
+# -- license: GPL-3.0 License                                                                            -- #
+# -- repository: https://github.com/Tania-Bell/MyST_Lab1/                                                                    -- #
+# -- --------------------------------------------------------------------------------------------------- -- #
 
-pandas
-glob2
-scipy
-yfinance
+pandas>=1.3.5
+glob 
+scipy>=1.7.3
+yfinance>=0.2.9
+numpy>=1.21.6
+jupyter>=1.0.0
