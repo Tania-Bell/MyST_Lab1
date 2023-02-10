@@ -22,7 +22,6 @@ all_files = fn.import_files('files/*.csv')
 common_tickers, all_files = fn.find_tickers(all_files,'Ticker','Peso (%)')
 
 prices=fn.import_prices(all_files,common_tickers,'2021-01-29','2023-01-26')
-print(prices)
 
 cash_w=float(all_files['20210129'][all_files['20210129']['Ticker'].str.contains("MXN")]['Peso (%)'])
 
@@ -43,3 +42,5 @@ capital_hist, shares_hist, comission_hist, shares_diff_hist = fn.rebalanceo(cash
 df_activa = fn.rend_a(capital_hist,cash_w)
 
 df_operaciones = fn.operations(shares_hist,comission_hist,shares_diff_hist)
+
+df_medidas = fn.measures(df_activa, df_pasiva, rf)
