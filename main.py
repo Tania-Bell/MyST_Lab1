@@ -44,3 +44,5 @@ df_activa = fn.rend_a(capital_hist,cash_w)
 df_operaciones = fn.operations(shares_hist,comission_hist,shares_diff_hist)
 
 df_medidas = fn.measures(df_activa, df_pasiva, rf)
+
+print(df_activa)
